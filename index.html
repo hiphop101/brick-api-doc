@@ -69,134 +69,126 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Welcome to Brick Developer Site. You can use our API to access Brick API endpoints, which can get information on various opening banking APIs.</p>
-<h1 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h1><blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre><code class="highlight plain"><span class="line">require &apos;kittn&apos;</span><br><span class="line"></span><br><span class="line">api = Kittn::APIClient.authorize!(&apos;meowmeowmeow&apos;)</span><br></code></pre>
-<pre><code class="highlight python"><span class="line"><span class="keyword">import</span> kittn</span><br><span class="line"></span><br><span class="line">api = kittn.authorize(<span class="string">'meowmeowmeow'</span>)</span><br></code></pre>
-<pre><code class="highlight plain"><span class="line"># With shell, you can just pass the correct header with each request</span><br><span class="line">curl &quot;api_endpoint_here&quot;</span><br><span class="line">  -H &quot;Authorization: meowmeowmeow&quot;</span><br></code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-<p>Kittn uses API keys to allow access to the API. You can register a new Brick API key at our website <a href="https://brick-api-site.herokuapp.com/" target="_blank" rel="noopener">https://brick-api-site.herokuapp.com/</a></p>
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-<p><code>Authorization: meowmeowmeow</code></p>
-<aside class="notice"><br>You must replace <code>meowmeowmeow</code> with your personal API key.<br></aside>
+<h1 id="Integration-Guides"><a href="#Integration-Guides" class="headerlink" title="Integration Guides"></a>Integration Guides</h1><p>Brick provides a dedicated sandbox environment for developers to perform testing and simulate bank transfers.</p>
+<aside class="notice"><br>Note that this feature will not be available in production mode. Please perform though testing before moving to production.<br></aside>
 
-<h1 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h1><h2 id="Verify-Account-Identity"><a href="#Verify-Account-Identity" class="headerlink" title="Verify Account Identity"></a>Verify Account Identity</h2><pre><code class="highlight plain"><span class="line">require &apos;kittn&apos;</span><br><span class="line"></span><br><span class="line">api = Kittn::APIClient.authorize!(&apos;meowmeowmeow&apos;)</span><br><span class="line">api.kittens.get</span><br></code></pre>
-<pre><code class="highlight python"><span class="line"><span class="keyword">import</span> kittn</span><br><span class="line"></span><br><span class="line">api = kittn.authorize(<span class="string">'meowmeowmeow'</span>)</span><br><span class="line">api.kittens.get()</span><br></code></pre>
-<pre><code class="highlight plain"><span class="line">curl &quot;http://example.com/api/kittens&quot;</span><br><span class="line">  -H &quot;Authorization: meowmeowmeow&quot;</span><br></code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
+<h2 id="List-of-Bank-Codes"><a href="#List-of-Bank-Codes" class="headerlink" title="List of Bank Codes"></a>List of Bank Codes</h2><table>
+<thead>
+<tr>
+<th>Bank Code</th>
+<th>Bank Name</th>
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dbs_sg</td>
+<td>DBS</td>
+<td>Singapore</td>
+</tr>
+<tr>
+<td>ocbc_sg</td>
+<td>OCBC</td>
+<td>Singapore</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h1><blockquote>
+<p>Make sure to replace <code>Client ID</code> with your client ID.</p>
 </blockquote>
-<pre><code class="highlight json"><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"Fluffums"</span>,</span><br><span class="line">    <span class="attr">"breed"</span>: <span class="string">"calico"</span>,</span><br><span class="line">    <span class="attr">"fluffiness"</span>: <span class="number">6</span>,</span><br><span class="line">    <span class="attr">"cuteness"</span>: <span class="number">7</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"Max"</span>,</span><br><span class="line">    <span class="attr">"breed"</span>: <span class="string">"unknown"</span>,</span><br><span class="line">    <span class="attr">"fluffiness"</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">"cuteness"</span>: <span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id="HTTP-Request"><a href="#HTTP-Request" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>GET http://example.com/api/kittens</code></p>
+<p>Brick issues each client a client ID and client secret. The client application needs to encrypt the client ID using client secret using JWT as an access token. </p>
+<p>You can register a new Brick API key at our website <a href="https://brick-api-site.herokuapp.com/" target="_blank" rel="noopener">https://brick-api-site.herokuapp.com/</a></p>
+<p>Brick API expects access token in each API requests to the server in a header that looks like the following:</p>
+<p><code>accessToken: xxxxxxxxxxxxxxxxxxxxxxxxxx</code></p>
+<aside class="notice"><br>You must replace <code>client ID</code> and <code>client secret</code> with your client ID and client secret.<br></aside>
+
+
+
+
+
+
+
+
+
+<h1 id="Brick-Connect"><a href="#Brick-Connect" class="headerlink" title="Brick Connect"></a>Brick Connect</h1><h2 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h2><p>Brick connect is a module to connect to the banks’ API. We provide a javascript code snippet to the client to open the Brick connect either as a page or popup.<br>Client app will see a list of banks in the Brick Connect page. Once the bank icon is clicked, users will be redirected to the bank’s OAuth2 page to authorize using their bank crendentials. Once it’s done, we will redirect back to the callback URL.</p>
+<ul>
+<li>Please keep the client secret carefully and do not share it</li>
+<li>Brick security server will maintain the access token with various banks for the data retrieval</li>
+</ul>
+<h1 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h1><h2 id="Get-Account-Identity"><a href="#Get-Account-Identity" class="headerlink" title="Get Account Identity"></a>Get Account Identity</h2><pre><code class="highlight plain"><span class="line">TODO to add node.js code sample</span><br></code></pre>
+<pre><code class="highlight python"><span class="line">TODO to add python code sample</span><br></code></pre>
+<pre><code class="highlight plain"><span class="line">TODO to add curl code sample</span><br></code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="line">&#123;</span><br><span class="line">	<span class="attr">"basic"</span>: &#123;</span><br><span class="line">		<span class="attr">"name"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">		<span class="attr">"firstName"</span>: <span class="string">"Doe"</span>,</span><br><span class="line">		<span class="attr">"lastName"</span>: <span class="string">"John"</span>,</span><br><span class="line">		<span class="attr">"alias"</span>: <span class="string">"Superman"</span>,</span><br><span class="line">		<span class="attr">"dateOfBirth"</span>: <span class="string">"01/Mar/1988"</span>,</span><br><span class="line">		<span class="attr">"gender"</span>: <span class="string">"M"</span>,</span><br><span class="line">		<span class="attr">"nationality"</span>: <span class="string">"British"</span>,</span><br><span class="line">		<span class="attr">"residingCountry"</span>: <span class="string">"Singapore"</span>,</span><br><span class="line">		<span class="attr">"ethnicGroup"</span>: <span class="string">"Free Thinker"</span>,</span><br><span class="line">		<span class="attr">"martialStatus"</span>: <span class="string">"Married"</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"contact"</span>: &#123;</span><br><span class="line">		<span class="attr">"mobilePhone"</span>: <span class="string">"81111111"</span>,</span><br><span class="line">		<span class="attr">"alternativeNumber"</span>: <span class="string">"1231231"</span>,</span><br><span class="line">		<span class="attr">"emailAddress"</span>: <span class="string">"john.doe@gmail.com"</span>,</span><br><span class="line">		<span class="attr">"address"</span>: <span class="string">"xxx"</span>,</span><br><span class="line">		<span class="attr">"postal"</span>: <span class="string">"134567"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></code></pre>
+<p>This endpoint retrieves the account identity information.</p>
+<h3 id="HTTP-Request"><a href="#HTTP-Request" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>POST http://brick-sea.com/api/getIdentity/v1</code></p>
 <h3 id="Query-Parameters"><a href="#Query-Parameters" class="headerlink" title="Query Parameters"></a>Query Parameters</h3><table>
 <thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Mandatory</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
+<td>account_number</td>
+<td>Yes</td>
 <td>If set to true, the result will also include cats.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
+<td>bank_code</td>
+<td>Yes</td>
 <td>If set to false, the result will include kittens that have already been adopted.</td>
 </tr>
 </tbody>
 </table>
-<aside class="success"><br>Remember — a happy kitten is an authenticated kitten!<br></aside>
+<aside class="success"><br>Success<br></aside>
 
-<h2 id="Get-a-Specific-Kitten"><a href="#Get-a-Specific-Kitten" class="headerlink" title="Get a Specific Kitten"></a>Get a Specific Kitten</h2><pre><code class="highlight plain"><span class="line">require &apos;kittn&apos;</span><br><span class="line"></span><br><span class="line">api = Kittn::APIClient.authorize!(&apos;meowmeowmeow&apos;)</span><br><span class="line">api.kittens.get(2)</span><br></code></pre>
-<pre><code class="highlight python"><span class="line"><span class="keyword">import</span> kittn</span><br><span class="line"></span><br><span class="line">api = kittn.authorize(<span class="string">'meowmeowmeow'</span>)</span><br><span class="line">api.kittens.get(<span class="number">2</span>)</span><br></code></pre>
-<pre><code class="highlight plain"><span class="line">curl &quot;http://example.com/api/kittens/2&quot;</span><br><span class="line">  -H &quot;Authorization: meowmeowmeow&quot;</span><br></code></pre>
+<h1 id="Payment"><a href="#Payment" class="headerlink" title="Payment"></a>Payment</h1><h2 id="Transfer-To-An-Account"><a href="#Transfer-To-An-Account" class="headerlink" title="Transfer To An Account"></a>Transfer To An Account</h2><pre><code class="highlight plain"><span class="line">TODO to add node.js code sample</span><br></code></pre>
+<pre><code class="highlight python"><span class="line">TODO to add python code sample</span><br></code></pre>
+<pre><code class="highlight plain"><span class="line">TODO to add curl code sample</span><br></code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response:</p>
 </blockquote>
-<pre><code class="highlight json"><span class="line">&#123;</span><br><span class="line">  <span class="attr">"id"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"Max"</span>,</span><br><span class="line">  <span class="attr">"breed"</span>: <span class="string">"unknown"</span>,</span><br><span class="line">  <span class="attr">"fluffiness"</span>: <span class="number">5</span>,</span><br><span class="line">  <span class="attr">"cuteness"</span>: <span class="number">10</span></span><br><span class="line">&#125;</span><br></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-<aside class="warning">If you’re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
-
-<h3 id="HTTP-Request-1"><a href="#HTTP-Request-1" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id="URL-Parameters"><a href="#URL-Parameters" class="headerlink" title="URL Parameters"></a>URL Parameters</h3><table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Payment"><a href="#Payment" class="headerlink" title="Payment"></a>Payment</h1><h2 id="Transfer-To-An-Account"><a href="#Transfer-To-An-Account" class="headerlink" title="Transfer To An Account"></a>Transfer To An Account</h2><pre><code class="highlight plain"><span class="line">require &apos;kittn&apos;</span><br><span class="line"></span><br><span class="line">api = Kittn::APIClient.authorize!(&apos;meowmeowmeow&apos;)</span><br><span class="line">api.kittens.get</span><br></code></pre>
-<pre><code class="highlight python"><span class="line"><span class="keyword">import</span> kittn</span><br><span class="line"></span><br><span class="line">api = kittn.authorize(<span class="string">'meowmeowmeow'</span>)</span><br><span class="line">api.kittens.get()</span><br></code></pre>
-<pre><code class="highlight plain"><span class="line">curl &quot;http://example.com/api/kittens&quot;</span><br><span class="line">  -H &quot;Authorization: meowmeowmeow&quot;</span><br></code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre><code class="highlight json"><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"Fluffums"</span>,</span><br><span class="line">    <span class="attr">"breed"</span>: <span class="string">"calico"</span>,</span><br><span class="line">    <span class="attr">"fluffiness"</span>: <span class="number">6</span>,</span><br><span class="line">    <span class="attr">"cuteness"</span>: <span class="number">7</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"Max"</span>,</span><br><span class="line">    <span class="attr">"breed"</span>: <span class="string">"unknown"</span>,</span><br><span class="line">    <span class="attr">"fluffiness"</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">"cuteness"</span>: <span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id="HTTP-Request-2"><a href="#HTTP-Request-2" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>GET http://example.com/api/kittens</code></p>
+<pre><code class="highlight"><span class="line">&#123;</span><br><span class="line">  &#123;</span><br><span class="line">    "id": 1,</span><br><span class="line">    "name": "Fluffums",</span><br><span class="line">    "breed": "calico",</span><br><span class="line">    "fluffiness": 6,</span><br><span class="line">    "cuteness": 7</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></code></pre>
+<p>This endpoint performs a bank transfer</p>
+<h3 id="HTTP-Request-1"><a href="#HTTP-Request-1" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>POST http://www.brick-sea.com/api/pay/v1</code></p>
 <h3 id="Query-Parameters-1"><a href="#Query-Parameters-1" class="headerlink" title="Query Parameters"></a>Query Parameters</h3><table>
 <thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Mandatory</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
+<td>bank_code</td>
 <td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>Bank code</td>
+</tr>
+<tr>
+<td>from_account_num</td>
+<td>true</td>
+<td>From account number</td>
+</tr>
+<tr>
+<td>to_account_num</td>
+<td>true</td>
+<td>receipt account number</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>true</td>
+<td>Amount </td>
 </tr>
 </tbody>
 </table>
-<aside class="success"><br>Remember — a happy kitten is an authenticated kitten!<br></aside>
+<aside class="success"><br>Success<br></aside>
 
-<h2 id="Get-a-Specific-Kitten-1"><a href="#Get-a-Specific-Kitten-1" class="headerlink" title="Get a Specific Kitten"></a>Get a Specific Kitten</h2><pre><code class="highlight plain"><span class="line">require &apos;kittn&apos;</span><br><span class="line"></span><br><span class="line">api = Kittn::APIClient.authorize!(&apos;meowmeowmeow&apos;)</span><br><span class="line">api.kittens.get(2)</span><br></code></pre>
-<pre><code class="highlight python"><span class="line"><span class="keyword">import</span> kittn</span><br><span class="line"></span><br><span class="line">api = kittn.authorize(<span class="string">'meowmeowmeow'</span>)</span><br><span class="line">api.kittens.get(<span class="number">2</span>)</span><br></code></pre>
-<pre><code class="highlight plain"><span class="line">curl &quot;http://example.com/api/kittens/2&quot;</span><br><span class="line">  -H &quot;Authorization: meowmeowmeow&quot;</span><br></code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre><code class="highlight json"><span class="line">&#123;</span><br><span class="line">  <span class="attr">"id"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"Max"</span>,</span><br><span class="line">  <span class="attr">"breed"</span>: <span class="string">"unknown"</span>,</span><br><span class="line">  <span class="attr">"fluffiness"</span>: <span class="number">5</span>,</span><br><span class="line">  <span class="attr">"cuteness"</span>: <span class="number">10</span></span><br><span class="line">&#125;</span><br></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-<aside class="warning">If you’re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
-
-<h3 id="HTTP-Request-3"><a href="#HTTP-Request-3" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id="URL-Parameters-1"><a href="#URL-Parameters-1" class="headerlink" title="URL Parameters"></a>URL Parameters</h3><table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody>
-</table>
 
         
           
