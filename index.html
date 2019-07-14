@@ -115,15 +115,13 @@
 <li>Please keep the client secret carefully and do not share it</li>
 <li>Brick security server will maintain the access token with various banks for the data retrieval</li>
 </ul>
-<h1 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h1><h2 id="Get-Account-Identity"><a href="#Get-Account-Identity" class="headerlink" title="Get Account Identity"></a>Get Account Identity</h2><pre><code class="highlight plain"><span class="line">TODO to add node.js code sample</span><br></code></pre>
-<pre><code class="highlight python"><span class="line">TODO to add python code sample</span><br></code></pre>
-<pre><code class="highlight plain"><span class="line">TODO to add curl code sample</span><br></code></pre>
+<h1 id="Products"><a href="#Products" class="headerlink" title="Products"></a>Products</h1><h2 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h2><pre><code class="highlight plain"><span class="line">TODO to add curl code sample</span><br></code></pre>
 <blockquote>
 <p>Response:</p>
 </blockquote>
-<pre><code class="highlight json"><span class="line">&#123;</span><br><span class="line">	<span class="attr">"basic"</span>: &#123;</span><br><span class="line">		<span class="attr">"name"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">		<span class="attr">"firstName"</span>: <span class="string">"Doe"</span>,</span><br><span class="line">		<span class="attr">"lastName"</span>: <span class="string">"John"</span>,</span><br><span class="line">		<span class="attr">"alias"</span>: <span class="string">"Superman"</span>,</span><br><span class="line">		<span class="attr">"dateOfBirth"</span>: <span class="string">"01/Mar/1988"</span>,</span><br><span class="line">		<span class="attr">"gender"</span>: <span class="string">"M"</span>,</span><br><span class="line">		<span class="attr">"nationality"</span>: <span class="string">"British"</span>,</span><br><span class="line">		<span class="attr">"residingCountry"</span>: <span class="string">"Singapore"</span>,</span><br><span class="line">		<span class="attr">"ethnicGroup"</span>: <span class="string">"Free Thinker"</span>,</span><br><span class="line">		<span class="attr">"martialStatus"</span>: <span class="string">"Married"</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"contact"</span>: &#123;</span><br><span class="line">		<span class="attr">"mobilePhone"</span>: <span class="string">"81111111"</span>,</span><br><span class="line">		<span class="attr">"alternativeNumber"</span>: <span class="string">"1231231"</span>,</span><br><span class="line">		<span class="attr">"emailAddress"</span>: <span class="string">"john.doe@gmail.com"</span>,</span><br><span class="line">		<span class="attr">"address"</span>: <span class="string">"xxx"</span>,</span><br><span class="line">		<span class="attr">"postal"</span>: <span class="string">"134567"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></code></pre>
-<p>This endpoint retrieves the account identity information.</p>
-<h3 id="HTTP-Request"><a href="#HTTP-Request" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>POST http://brick-sea.com/api/getIdentity/v1</code></p>
+<pre><code class="highlight json"><span class="line">&#123;</span><br><span class="line">	<span class="attr">"basic"</span>: &#123;</span><br><span class="line">		<span class="attr">"name"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">		<span class="attr">"firstName"</span>: <span class="string">"Doe"</span>,</span><br><span class="line">		<span class="attr">"lastName"</span>: <span class="string">"John"</span>,</span><br><span class="line">		<span class="attr">"alias"</span>: <span class="string">"Superman"</span>,</span><br><span class="line">		<span class="attr">"dateOfBirth"</span>: <span class="string">"01/Mar/1988"</span>,</span><br><span class="line">		<span class="attr">"gender"</span>: <span class="string">"M"</span>,</span><br><span class="line">		<span class="attr">"nationality"</span>: <span class="string">"British"</span>,</span><br><span class="line">		<span class="attr">"residingCountry"</span>: <span class="string">"Singapore"</span>,</span><br><span class="line">		<span class="attr">"ethnicGroup"</span>: <span class="string">"Free Thinker"</span>,</span><br><span class="line">		<span class="attr">"martialStatus"</span>: <span class="string">"Married"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"contact"</span>: &#123;</span><br><span class="line">		<span class="attr">"mobilePhone"</span>: <span class="string">"81111111"</span>,</span><br><span class="line">		<span class="attr">"alternativeNumber"</span>: <span class="string">"1231231"</span>,</span><br><span class="line">		<span class="attr">"emailAddress"</span>: <span class="string">"john.doe@gmail.com"</span>,</span><br><span class="line">		<span class="attr">"address"</span>: <span class="string">"xxx"</span>,</span><br><span class="line">		<span class="attr">"postal"</span>: <span class="string">"134567"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></code></pre>
+<p>The identity endpoint allows you to retrieve account holder financial information  including names, emails, contacts, and addresses.</p>
+<h3 id="HTTP-Request"><a href="#HTTP-Request" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>POST http://brick-sea.com/api/identity/v1/get</code></p>
 <h3 id="Query-Parameters"><a href="#Query-Parameters" class="headerlink" title="Query Parameters"></a>Query Parameters</h3><table>
 <thead>
 <tr>
@@ -133,6 +131,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>access_token</td>
+<td>Yes</td>
+<td>Each request has to firstly authenticated using auth service.</td>
+</tr>
 <tr>
 <td>account_number</td>
 <td>Yes</td>
@@ -147,6 +150,73 @@
 </table>
 <aside class="success"><br>Success<br></aside>
 
+<h2 id="Balance"><a href="#Balance" class="headerlink" title="Balance"></a>Balance</h2><pre><code class="highlight plain"><span class="line">TODO to add curl code sample</span><br></code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="line">&#123;</span><br><span class="line">	<span class="attr">"accounts"</span>: [&#123;</span><br><span class="line">		<span class="attr">"account_id"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">		<span class="attr">"balance"</span>: &#123;</span><br><span class="line">			<span class="attr">"available_amt"</span>: <span class="number">1000</span>,</span><br><span class="line">			<span class="attr">"current_amt"</span>: <span class="number">1000</span>,</span><br><span class="line">			<span class="attr">"limit"</span>: <span class="number">1000</span>,</span><br><span class="line">			<span class="attr">"currency_code"</span>: <span class="string">"SGD"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="attr">"account_id"</span>: <span class="string">"John Wick"</span>,</span><br><span class="line">		<span class="attr">"balance"</span>: &#123;</span><br><span class="line">			<span class="attr">"available_amt"</span>: <span class="number">2000</span>,</span><br><span class="line">			<span class="attr">"current_amt"</span>: <span class="number">1000</span>,</span><br><span class="line">			<span class="attr">"limit"</span>: <span class="number">1000</span>,</span><br><span class="line">			<span class="attr">"currency_code"</span>: <span class="string">"IDR"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></code></pre>
+<p>The balance endpoint retrives the real-time balance for the requested accounts. </p>
+<h3 id="HTTP-Request-1"><a href="#HTTP-Request-1" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>POST http://brick-sea.com/api/balance/v1/get</code></p>
+<h3 id="Query-Parameters-1"><a href="#Query-Parameters-1" class="headerlink" title="Query Parameters"></a>Query Parameters</h3><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>access_token</td>
+<td>Yes</td>
+<td>Each request has to firstly authenticated using auth service.</td>
+</tr>
+<tr>
+<td>account_numbers</td>
+<td>Yes</td>
+<td>A list of account_numbers to retrieve.</td>
+</tr>
+</tbody>
+</table>
+<aside class="success"><br>Success<br></aside>
+
+<h2 id="Transactions"><a href="#Transactions" class="headerlink" title="Transactions"></a>Transactions</h2><pre><code class="highlight plain"><span class="line">TODO to add curl code sample</span><br></code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="line">&#123;</span><br><span class="line">	<span class="attr">"transactions"</span>: [&#123;</span><br><span class="line">			<span class="attr">"account_id"</span>: <span class="string">"asdfas23424"</span>,</span><br><span class="line">			<span class="attr">"transaction_date"</span>: <span class="string">"2017-01-29"</span>,</span><br><span class="line">			<span class="attr">"value_date"</span>: <span class="string">"2017-01-29"</span>,</span><br><span class="line">			<span class="attr">"credit"</span>:  <span class="number">1000</span>,</span><br><span class="line">			<span class="attr">"debit"</span>: <span class="number">0</span>,</span><br><span class="line">			<span class="attr">"balance"</span>: <span class="number">321</span>,</span><br><span class="line">			<span class="attr">"category_code"</span>: <span class="string">"LOAN_REPAYMENT"</span>,</span><br><span class="line">			<span class="attr">"category_desc"</span>: <span class="string">"Loan Repayment"</span>,</span><br><span class="line">			<span class="attr">"currency_code"</span>: <span class="string">"SGD"</span>,</span><br><span class="line">			<span class="attr">"remarks"</span>: <span class="string">"DBS"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"account_id"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">			<span class="attr">"transaction_date"</span>: <span class="string">"2017-01-29"</span>,</span><br><span class="line">			<span class="attr">"value_date"</span>: <span class="string">"2017-01-29"</span>,</span><br><span class="line">			<span class="attr">"credit"</span>:  <span class="number">0</span>,</span><br><span class="line">			<span class="attr">"debit"</span>: <span class="number">1000</span>,</span><br><span class="line">			<span class="attr">"balance"</span>: <span class="number">1321</span>,</span><br><span class="line">			<span class="attr">"category_code"</span>: <span class="string">"LOAN_REPAYMENT"</span>,</span><br><span class="line">			<span class="attr">"category_desc"</span>: <span class="string">"Loan Repayment"</span>,</span><br><span class="line">			<span class="attr">"currency_code"</span>: <span class="string">"SGD"</span>,</span><br><span class="line">			<span class="attr">"remarks"</span>: <span class="string">"DBS"</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></code></pre>
+<p>The transactions endpoint retrieve transaction data for a requested account. Transaction data is standardized across financial institutions.</p>
+<p>The results are paginated due to the large volumn of transactions associated. Loop through the count and offset parmaters in the response to fetch all the transactions.</p>
+<h3 id="HTTP-Request-2"><a href="#HTTP-Request-2" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>POST http://brick-sea.com/api/transactions/v1/get</code></p>
+<h3 id="Query-Parameters-2"><a href="#Query-Parameters-2" class="headerlink" title="Query Parameters"></a>Query Parameters</h3><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>access_token</td>
+<td>Yes</td>
+<td>Each request has to firstly authenticated using auth service.</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>Yes</td>
+<td>If set to true, the result will also include cats.</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>Yes</td>
+<td>If set to false, the result will include kittens that have already been adopted.</td>
+</tr>
+</tbody>
+</table>
+<aside class="success"><br>Success<br></aside>
+
+
 <h1 id="Payment"><a href="#Payment" class="headerlink" title="Payment"></a>Payment</h1><h2 id="Transfer-To-An-Account"><a href="#Transfer-To-An-Account" class="headerlink" title="Transfer To An Account"></a>Transfer To An Account</h2><pre><code class="highlight plain"><span class="line">TODO to add node.js code sample</span><br></code></pre>
 <pre><code class="highlight python"><span class="line">TODO to add python code sample</span><br></code></pre>
 <pre><code class="highlight plain"><span class="line">TODO to add curl code sample</span><br></code></pre>
@@ -155,8 +225,8 @@
 </blockquote>
 <pre><code class="highlight"><span class="line">&#123;</span><br><span class="line">  &#123;</span><br><span class="line">    "id": 1,</span><br><span class="line">    "name": "Fluffums",</span><br><span class="line">    "breed": "calico",</span><br><span class="line">    "fluffiness": 6,</span><br><span class="line">    "cuteness": 7</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></code></pre>
 <p>This endpoint performs a bank transfer</p>
-<h3 id="HTTP-Request-1"><a href="#HTTP-Request-1" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>POST http://www.brick-sea.com/api/pay/v1</code></p>
-<h3 id="Query-Parameters-1"><a href="#Query-Parameters-1" class="headerlink" title="Query Parameters"></a>Query Parameters</h3><table>
+<h3 id="HTTP-Request-3"><a href="#HTTP-Request-3" class="headerlink" title="HTTP Request"></a>HTTP Request</h3><p><code>POST http://www.brick-sea.com/api/pay/v1</code></p>
+<h3 id="Query-Parameters-3"><a href="#Query-Parameters-3" class="headerlink" title="Query Parameters"></a>Query Parameters</h3><table>
 <thead>
 <tr>
 <th>Parameter</th>
